@@ -3,7 +3,9 @@
 
 ## Part 1: What is Git and why use it?
 
-In this image, the graph is read from top to bottom. Each dot represents a "commit" which is sort of like uploading your progress onto the current branch and adding a message of what changes have been made.
+In the below image, the graph is read from top to bottom. Each dot represents a "commit" which is sort of like uploading your progress onto the current branch and adding a message of what changes have been made.
+
+[Example Graph](/images/example_graph.png)
 
 Now that you have a basic understanding of what Git is, the next parts will help guide you through the setup process.
 
