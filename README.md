@@ -46,19 +46,19 @@ Feel free to follow along in your own computer's terminal emulator during this s
 
 The following paragraphs explain how to access a *bash* shell from your operating system. This is an interactive prompt that allows the user to enter commands in the bash language.
 
-On a Windows computer you can search for powershell (don't run as administrator this time) and type in `wsl` followed by the enter key. If this doesn't work that means you haven't set up WSL correctly.
+On a Windows computer you can search for "powershell" (don't run as administrator this time) and type `wsl` followed by the enter key. If the command hangs or is not found, that means you haven't set up WSL correctly and you must go back to the previous step to try again.
 
 On MacOS search for the "terminal" app.
 
 On Ubuntu search for "terminal".
 
-When you first open your terminal emulator, there might be a message at the top. Below that message you may see somthing like:
+When you first open your terminal emulator, there might be a message at the top. Below that message you should see somthing like:
 
 ```
 eli@laptop$
 ```
 
-Depending on what operating system or version of operating system you are using, this might look a bit different than mine (eg: a `%` symbol on zsh for macs). You may start typing your commands after the `$`, `%`, `>` or whatever other symbol is present. This is the indicator that lets you know it has finished executing its previous process and is ready for more input. If there is no symbol present then the terminal is currently executing a previous command and is not ready for you to type input.
+Depending on what operating system you are using, this might look a bit different than mine (eg: a `%` symbol for macos). You may start typing your commands after the `$`, `%`, `>` or whatever other symbol is present. This is the indicator that lets you know the shell has finished executing its previous process and is ready for more input. If there is no symbol present then the terminal is currently executing a previous command and is not ready for you to type input.
 
 I will now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. You do not have to type it yourself. The first command I would like you to type is `pwd`:
 
@@ -67,24 +67,32 @@ $ pwd
 /home/eli
 ```
 
-This command prints the current working directory (hence pwd). It is the command-line equivalent of what is commonly known as a "folder". If you would like to see a list of directories that you can change to, type `ls`.
+The second line of this example is not prefixed with a `$` symbol as it is the output of the previous command and is not typed out by the user.
+
+This command **prints** the current **working** **directory**. You are basically telling your bash shell to print folder on your computer that you are running commands inside of. 
+
+If you would like to see the folders and files that are inside of your current folder (kind of like a file manager), you can **list** them with `ls`.
 
 ```
 $ ls
-Desktop   Documents   Downloads   Music   Pictures   Public   Videos
+Desktop   Documents   Downloads   Git-Guide.txt   Music   Pictures   Public   Videos
 ```
 
-Note that this command lists everything in the current directory, including files. Your terminal might show the directories in bold, or they might be a different color to separate them from the files. Now that you are aware of the subdirectories use `cd` to change directories (hence "cd").
+Note that this command lists everything in the current directory, including files. Your terminal might show the directories in bold, or they might be a different color to separate them from the files.
+
+Now that you are aware of the folders inside (I'll call them subdirectories from now on) use `cd` to **change** **directories** (hence "cd"). This command takes a single argument unlike `ls`; you need to type the name of the directory to change to (case matters).
 
 ```
 $ cd Downloads
 $ pwd
 /home/eli/Downloads
+$ ls
+File.txt   Minecraft.jar   Movie.mp4   Song.mp3   Virus.sh
 ```
 
 You now know how to move around in the terminal.
 
-*If you would like to exit terminal, type:* `exit`.
+*If you would like to exit the terminal, type:* `exit`.
 
 ## Part 3: SSH
 
