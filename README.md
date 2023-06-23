@@ -22,21 +22,23 @@ Now that you have a basic understanding of what Git is, the next parts will help
 Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer. This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
 
 ```
-$ git commit -m 'Added methods for telemetry'
+$ git commit --message 'Added methods for telemetry'
 ```
 
 The `$` indicates the start of the line for a command to be entered by the user. It is not typed by the user but will exist on its own line in the terminal emulator by default. If the line is blank, then your terminal emulator is already executing a task and not ready for user input.
 
 The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the shell that you would like to make a new git commit.
 
-Next are the optional arguments or *options*. You can choose a specific option by starting with a `-` symbol and then a letter which stands for the desired option. In this case, `-m` tells the `git commit` to include a message. The message is then able to be typed after the `-m` option. The `-m` option is expecting a single argument. Since arguments are seperated by a space in bash (the language we are using currently), the message argument must be in quotes or only the first word will be taken as the message. ie:
+Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` and then one or more words which signify the desired option. In this case, `--message` tells the `git commit` to include a message. The message is then typed after the message option, which expects a single argument (your message). If there is an options with multiple words it will look something like this: `--option-with-multiple-words`.
+
+Since arguments are seperated by a space in bash, the message argument must be in quotes or only the first word will be taken as the message. ie:
 
 ```
 $ git commit -m Added methods for telemetry
 $ git commit -m 'Added methods for telemetry'
 ```
 
-The commit message of the first command is `Added`, while the commit message of the second command is `Added methods for telemetry`.
+The commit message of the first command is "Added", while the commit message of the second command is "Added methods for telemetry".
 
 ### Navigation
 
