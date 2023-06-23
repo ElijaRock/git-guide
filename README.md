@@ -1,9 +1,13 @@
 # Git Guide
-#### A comprehensive guide to using git as a version control system.
+#### A comprehensive and simple beginner guide to using git as a version control system.
 
 ## Part 1: What is Git and why use it?
 
-In the below image, the graph is read from top to bottom. Each dot represents a "commit" which is sort of like uploading your progress onto the current branch and adding a message of what changes have been made.
+Don't worry about all of the details right away; everything will be explained later throughout the guide. The below image is a basic representation of a git tree (read from top to bottom). Each dot represents a *commit* which is sort of like saving your work in its current state. You can always revert to a previous commit if you make a mistake and lose your progress.
+
+This commit is done to a *branch*. Think of branches as a slightly different version of the project. For example, you might want to have a `stable` branch that gets updated infrequently in order to have a stable version of the code. Then a `testing` branch can be used to test and implement new features.
+
+The commits in the image contain messages informing the team about the purpose of that commit. While commit messages are not required, it is considered bad practice to leave them out.
 
 ![Example Graph](/images/example_graph.png)
 
@@ -214,9 +218,13 @@ The star next to `new-feature` branch shows that I am currently working on it.
 
 Open a file on your computer, correct mistakes, add features, or make a new file. If you are using a file ending in `.md` and not sure how the syntax works, look up: "markdown syntax" (this is a markdown file, hence the .md file extension).
 
+If you want to see the changes you have made thus far you may type: `git diff` and it will highlight the differences between the original code and modified version.
+
 There is one more configuration step before you can commit (you only have to do this once). Make sure your current working directory is inside of the git repo. Then, enter these commands:
 
 ```
+$ git config user.name '<your name>'
+$ git config user.email '<your email address>'
 $ git config gpg.format ssh
 $ git config user.signingkey </path/to/ssh/key>.pub
 ```
@@ -224,6 +232,12 @@ $ git config user.signingkey </path/to/ssh/key>.pub
 Replace the last argument with the actual file path of your public key (mine would be `~/.ssh/<filename>.pub`).
 
 Now you can stage and commit the changes you have made to a repo. If you have added any files, you must type `git add -A` to add all files in the repo to be tracked. This command also stages the changes you have made to all files (kind of like a two in one). If you didn't run the previous command, you need to run `git add -u` to track the changes you made in only the currently tracked files (files you added won't be committed).
+
+After you have staged your changes you can compare your branch and the upstream one before committing by doing the following (change `new-feature` to the name of your branch).
+
+```
+git diff new-feature origin/new-feature
+```
 
 You can now commit to the repo:
 
@@ -297,16 +311,16 @@ I should also probably mention that you only need to clone the repo once; always
 
 Now that you have the knowledge, I will let you know of some best practices that I learned in the time that I have used git.
 
-1. Do not make changes to the main branch. The code on this branch is stable, tested, and reliable.
+1. If ever in doubt run `git status`. This will give you valuable information on the current state of the git repo on your computer, changes you have made, etc.
 
-2. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and merge to resolve the conflicts instead.
+2. Do not make changes to the main branch. The code on this branch is stable, tested, and reliable.
 
-3. Detailed commit messages. Make it obvious what your commit does to change the code (don't add a meaningless message).
+3. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and merge to resolve the conflicts instead.
 
-4. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fufills the issue.
+4. Detailed commit messages. Make it obvious what your commit does to change the code (don't add a meaningless message).
 
-5. Have fun. Git can be a frustrating tool to use at times, but it is very rewarding to close issues and have your PR approved.
+5. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fufills the issue.
 
-6. Read the docs. I have gathered almost all of my information from the Github documentation. If you are ever unsure, try reading the documentation first.
+6. Read the docs. I have gathered almost all of my information from the Github documentation. If you are ever unsure, try reading the official documentation first.
 
 ###### TODO: add links for each section of the git proess and submit issues to this repo.
