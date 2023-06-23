@@ -15,17 +15,21 @@ Now that you have a basic understanding of what Git is, the next parts will help
 
 ## Part 2: The Terminal
 
-### NOTICE: If you are using a Windows computer you will need to configure WSL to follow the rest of the guide from here on: https://learn.microsoft.com/en-us/windows/wsl/install.
+### NOTICE: If you are using a Windows computer you will need to configure WSL (version 2) to follow the rest of the guide from here on: https://learn.microsoft.com/en-us/windows/wsl/install. You should just be able to run `wsl --install` from powershell as an administrator.
 
 ### Basic Syntax
 
-Git can be used through a command line interface. This means that you will be utilizing git through a terminal emulator on your computer. An example of a terminal command that commits to the current working branch looks like this:
+Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer. This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
 
 ```
 $ git commit -m 'Added methods for telemetry'
 ```
 
-Don't worry if you do not yet understand what this means, I will explain the syntax to you now. You will get a better understanding of its function later in the guide. The `$` indicates the start of the command to be entered by the user. It is not typed by the user but will exist on its own line in the terminal emulator by default. The command to be executed is then entered: `git`. Followed by the command is the subcommand: `commit`. In other words, you are telling the terminal that you would like to make a new git commit. Followed by the subcommand are the options, represented by a `-` symbol and then the desired option. `-m` tells the `git commit` to include a message. The message is then able to be typed after the `-m` option. The `-m` option is expecting a single argument. Since arguments are seperated by a space in bash (the language we are using currently), the message argument must be in quotes or only the first word will be taken as the message. ie:
+The `$` indicates the start of the line for a command to be entered by the user. It is not typed by the user but will exist on its own line in the terminal emulator by default. If the line is blank, then your terminal emulator is already executing a task and not ready for user input.
+
+The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the shell that you would like to make a new git commit.
+
+Next are the optional arguments or *options*. You can choose a specific option by starting with a `-` symbol and then a letter which stands for the desired option. In this case, `-m` tells the `git commit` to include a message. The message is then able to be typed after the `-m` option. The `-m` option is expecting a single argument. Since arguments are seperated by a space in bash (the language we are using currently), the message argument must be in quotes or only the first word will be taken as the message. ie:
 
 ```
 $ git commit -m Added methods for telemetry
@@ -38,7 +42,15 @@ The commit message of the first command is `Added`, while the commit message of 
 
 Feel free to follow along in your own computer's terminal emulator during this section.
 
-When you first open your terminal, there might be a message at the top. Below that message you may see somthing like:
+The following paragraphs explain how to access a *bash* shell from your operating system. This is an interactive prompt that allows the user to enter commands in the bash language.
+
+On a Windows computer you can search for powershell (don't run as administrator this time) and type in `wsl` followed by the enter key. If this doesn't work that means you haven't set up WSL correctly.
+
+On MacOS search for the "terminal" app.
+
+On Ubuntu search for "terminal".
+
+When you first open your terminal emulator, there might be a message at the top. Below that message you may see somthing like:
 
 ```
 eli@laptop$
