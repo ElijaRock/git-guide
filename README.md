@@ -29,7 +29,7 @@ The `$` indicates the start of the line for a command to be entered by the user.
 
 The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the shell that you would like to make a new git commit.
 
-Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` and then one or more words which signify the desired option. In this case, `--message` tells the `git commit` to include a message. The message is then typed after the message option, which expects a single argument (your message). If there is an options with multiple words it will look something like this: `--option-with-multiple-words`.
+Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` and then one or more words. In this case, `--message` tells the `git commit` to include a message. The message content is then typed after the message option. To reiterate you are specifying an option that takes one argument: the content of your message. If there is an option with multiple words it will probably look something like this: `--option-with-multiple-words`.
 
 Since arguments are seperated by a space in bash, the message argument must be in quotes or only the first word will be taken as the message. ie:
 
@@ -38,7 +38,7 @@ $ git commit -m Added methods for telemetry
 $ git commit -m 'Added methods for telemetry'
 ```
 
-The commit message of the first command is "Added", while the commit message of the second command is "Added methods for telemetry".
+The commit message of the first command is "Added", while the commit message of the second command is "Added methods for telemetry". The messsage option will only take one argument.
 
 ### Navigation
 
