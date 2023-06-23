@@ -96,7 +96,17 @@ You now know how to move around in the terminal.
 
 ## Part 3: SSH
 
-If you have taken a Computer Science class prior to this, then you may remember symmetric encryption. If you don't, watch [this video](https://youtu.be/GSIDS_lvRv4?t=230) from 3:50-5:00.
+If you have taken a Computer Science class prior to reading this guide, then you may remember asymmetric encryption.
+
+If you don't, I will try to provide a simple example. I start by generating a keypair: two keys that are mathematically linked. One key is public and is known by everyone. The other is private and must not be distributed.
+
+If my friend wants to send me a message, they can encrypt it with my public key (which everyone has). Now, the message is garbled gibberish and makes no sense to anyone (kind of like how an enigma machine works). This means if someone with mal-intent were to intercept this message, it would be of no use to them.
+
+The encrypted message can then be decrypted with my own private key. Therefore, the message can only be understood by me, and nobody else can interpret it. Anything that is encrypted with the public key can only be decrypted with the private key and vice-versa.
+
+You may ask what the use is of encrypting something with my private key, if everyone can just decrypt it with my public key. You are correct in that it doesn't work to obfuscate the message; however, it can be used as a digital signature.
+
+If everyone can decrypt the message with my public key, that means it must have been encrypted with my own private key (the one that nobody else has). In other words, no one will be able to falsely claim that they are me because they do not have my private key and therefore cannot sign their messages under my name.
 
 In other words you will need SSH for two reasons:
 
