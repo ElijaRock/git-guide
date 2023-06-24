@@ -110,11 +110,13 @@ If everyone can decrypt the message with my public key, that means it must have 
 
 In other words you will need SSH for two reasons:
 
-1. You are going to be signing your commits so we know that *you* are the one who made them.
+1. You are going to be signing your commits so we know that ***you*** are the one who made them.
 
-2. If you are working on a private repository, only authorized users can see and work on it, and you will need an SSH keypair to do this.
+2. If you are working on a private *repository*, meaning your code can only be seen by authorized users, you will need an SSH keypair to do this (SSH is a protocol that uses asymmetric encryption to verify identity among other things).
 
 #### DISCLAIMER: The private key is private and STAYS ON YOUR COMPUTER. DO NOT SHARE YOUR PRIVATE KEY ***EVER***, not even between devices that you own. If you need to work on a repository with another device, you ***MUST*** generate a new keypair.
+
+A repository is a cloud location that stores your projects and tracks their history. We will be working with repositories using git as an interface to contribute and collaborate.
 
 Open the terminal and type `cd ~`, (`~` is an alias for "home" and in my case really translates to "/home/eli"), although you proabably are already in the home directory (you will know if you run `pwd`).
 
