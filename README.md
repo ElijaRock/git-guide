@@ -316,9 +316,19 @@ $ git push origin new-feature
 
 This pushes it to my new branch that I made and now I will be able to see the changes on the website. The `origin` part is shorthand for the github url, so it basically means go to this repository's link and find the new-feature branch then push changes/commits to it.
 
-Now visit the repository on github.com, go to the top left where is says you are on the main branch, and switch to `new-feature` branch. Then you can click on the top right it should say `x commits` below the `code` button you found earlier, click on the commits. You should now be able to see your commit with the message. If you have set up your ssh key correctly there will be a green `verified` bubble on the right side of your commit.
+Now visit the repository on github.com, go to the top left where is says you are on the main branch, and switch to `new-feature` branch. There will be more than one branch in your case (in the example image there is only `main`).
 
-###### TODO: add example image
+![new_feature_branch](/images/new_branch.png)
+
+The website will refresh and you can click on the top right it should say `x commits` below the `code` button you found earlier, in my case I will click on where it says "15 commits".
+
+![x_commits](/images/x_commits.png)
+
+You should now be able to see a list of commits including your own. If you have set up your ssh key correctly there will be a green `verified` bubble on the right side of your commit. In the top left of the image, you can see that I am on the main branch; however, you should be on your new branch.
+
+![commits_list](/images/commits_list.png)
+
+![verified](/images/verified.png)
 
 ### Submit a Pull Request
 
