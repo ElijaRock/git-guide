@@ -230,6 +230,8 @@ Aptitude (apt) requires that you have elevated permissions when installing packa
 
 It's time to *clone* your first repository. Cloning allows you to have a local copy of the code from a repository on your machine. Essentially you are "downloading" the code.
 
+#### NOTE: You only need to clone a repository ONCE. Never use clone to grab the new changes, but the second time onward you will use "fetch". This will be explained later.
+
 Open terminal and `cd` into a directory of your choice. Then, go to the top of the page on a Github repo that you would like to work on (if you don't have on you can create it yourself) and click on the `<> Code` green button, then click ssh and copy the link.
 
 ![code](/images/code.png)
@@ -301,18 +303,18 @@ git diff new-feature origin/new-feature
 In this command, "origin" means the url of the Github repo. In other words you are telling `git` to look at what is on the website and then compare it with what is on your computer. If there is no difference that means you haven't correctly staged your changes (you could also run `git status` for a more simple, general overview). You can now commit to the repo:
 
 ```
-$ git commit -S -m 'This is a short message describing the changes I have made' -m 'This is a longer more thourough description of the changes made'
+$ git commit -S -m 'This is a short message describing the changes I have made' -m 'This is a longer, more thorough description of the changes made'
 ```
 
-You can ommit the second `-m` if you have only made small, incremental changes. the `-S` option allows you to sign the commit, in other words we can verify that **YOU** made these changes (in the case of identity theft). That is why it's so important to not give your private key to anyone ever.
+You can ommit the second `-m` or "message" option if you have only made small, incremental changes. The `-S` option allows you to sign the commit with your signing key, in other words we can verify that **YOU** made these changes (in the case of identity theft). That is why it's so important to not give your private key to anyone ever.
 
-Okay now the last step is to push the commit to the branch you are working on. This will show the commit on github.com website and everyone else will be able to see it and fetch it. Type:
+The last step is to *push* the commit to the branch you are working on. Now that the commit is on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it and *fetch* it. Type:
 
 ```
 $ git push origin new-feature
 ```
 
-This pushes it to my new branch that I made and now I will be able to see the changes on the website. The `origin` part is shorthand for the github url, so it basically means go to this link and find the new-feature branch then push to it.
+This pushes it to my new branch that I made and now I will be able to see the changes on the website. The `origin` part is shorthand for the github url, so it basically means go to this repository's link and find the new-feature branch then push changes/commits to it.
 
 Now visit the repository on github.com, go to the top left where is says you are on the main branch, and switch to `new-feature` branch. Then you can click on the top right it should say `x commits` below the `code` button you found earlier, click on the commits. You should now be able to see your commit with the message. If you have set up your ssh key correctly there will be a green `verified` bubble on the right side of your commit.
 
