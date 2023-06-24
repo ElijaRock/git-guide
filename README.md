@@ -120,14 +120,14 @@ A repository is a cloud location that stores your projects and tracks their hist
 
 Open the terminal and type `cd ~`, (`~` is an alias for "home" and in my case really translates to "/home/eli"), although you proabably are already in the home directory (you will know if you run `pwd`).
 
-Now that you are home you should type `ls --all` which will list all files and folders (hence `--all`). Once again `--all` is an option for the `ls` command that takes 0 arguments. Most command-line options also have a shorter, one letter counterpart. They are usually preceeded by a single `-` in their one letter form: `ls -a`. This options are functionally equiavalent. If you would like to see more options for a specific command, such as `ls`, you can succeed it with a `--help` or `-h` option. If you already see a directory named `.ssh`, skip the next step.
+Now that you are home you should type `ls --all` which will list all files and folders (hence `--all`). Once again `--all` is an option for the `ls` command that takes 0 arguments. Once again, most command-line options also have a shorter, one letter counterpart. They are usually preceeded by a single `-` in their one letter form: `ls -a`. These options are functionally equiavalent. If you would like to see more options for a specific command, such as `ls`, you can succeed it with a `--help` or `-h` option. If you already see a directory named `.ssh`, skip the next step.
 
-To create a new directory, enter the command `mkdir .ssh`. This makes a directory under your current working directory called `.ssh`. Now you should run `ls -a` and see a directory named `.ssh` in the list of files and dirs.
+To create a new directory, enter the command `mkdir .ssh`. This **makes** a **directory** under your current working directory called `.ssh`. Now you should run `ls -a` and see a directory named `.ssh` in the list of files and folders.
 
 You will need to generate an ssh keypair. To do this you will need to enter the following command:
 
 ```
-ssh-keygen -a 100 -t ed25519 -f ~/.ssh/<filename> -C first.lastname@pinecrest.edu
+ssh-keygen -a 100 -t ed25519 -f ~/.ssh/<filename> -C <your_email_address>
 ```
 
 Replace "\<filename\>" with whatever you want to call your keypair and the last argument with your email address.
