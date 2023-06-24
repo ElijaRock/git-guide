@@ -358,7 +358,7 @@ Suppose someone on your team worked on your branch while you were gone to help i
 $ git fetch origin new-feature
 ```
 
-Now you have their changes tracked, and need to review them before following through. (This basically works like reloading a website to see what's new).
+Now you have their changes to compare to your branch, and need to review them before following through. (This basically works like reloading a website to see what's new).
 
 If you want to see the difference between your `new-feature` branch and the repos up to date `new-feature` branch, run this command:
 
@@ -366,7 +366,7 @@ If you want to see the difference between your `new-feature` branch and the repo
 $ git diff new-feature origin/new-feature
 ```
 
-You are now looking at the changes your team member made to your branch compared to the one you had from before. If you like these changes, you can merge them into your current directory. Actually you can use merge or rebase, if you would like to see the difference, take a look at [this link](https://www.atlassian.com/git/tutorials/merging-vs-rebasing). In this case I will rebase the changes they made onto the directory I am working in.
+You are now looking at the changes your team member made to your branch compared to the one you had from before. If you like these changes, you can merge them into your current copy of the branch on your computer. Actually you can use merge or rebase, if you would like to see the difference, take a look at [this link](https://www.atlassian.com/git/tutorials/merging-vs-rebasing). In this case I will rebase the changes they made onto the directory I am working in.
 
 ```
 $ git rebase origin/new-feature
@@ -378,15 +378,15 @@ You may get an error that you need to stash your changes before a merge or rebas
 $ git stash
 ```
 
-You may then run `rebase` again and you will be on the most up to date version of `new-feature` branch. If you would then like to reapply your changes to this latest version, run the following command:
+You may then run `rebase` again and you will be on the most up to date version of `new-feature` branch. But your uncommitted changes will be missing (temporarily). If you would then like to reapply your changes to this latest version of the branch, run the following command:
 
 ```
 $ git stash apply
 ```
 
-Now I am on the latest version of the branch `new-feature` and can track and commit my changes as usual. Git forces you to do this because it would be impossible to have your commit and your peer's commit to be "next to each other" at the same time on the same branch. Essentially what you just did is moved your changes from "next to" the peer's commit to after their commit, creating a linear branch history. If this is confusing at first, do not worry, the more you use Git the more you will understand over time.
+Now I am on the latest version of the branch `new-feature` and can track and commit my changes as usual. Git forces you to do this because it would be impossible to have your commit and your peer's commit to be "next to each other" at the same time on the same branch. Essentially what you just did is moved your changes from "next to" the peer's commit to after their commit, creating a linear branch history (think of the image at the beginning of this guide). If this is confusing at first, do not worry, the more you use `git` the more you will understand over time.
 
-I should also probably mention that you only need to clone the repo once; always use fetch to grab the newest changes. Also, git has many many more features than specified here and can be used to do even more powerful things.
+I will remind you again that you only need to clone the repo once; always use fetch to grab the newest changes. Also, `git` has many many more features than specified here and can be used to do even more powerful things.
 
 ## Part 7: Best Practices
 
@@ -396,12 +396,12 @@ Now that you have the knowledge, I will let you know of some best practices that
 
 2. Do not make changes to the main branch. The code on this branch is stable, tested, and reliable.
 
-3. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and merge to resolve the conflicts instead.
+3. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and merge/rebase to resolve the conflicts instead.
 
 4. Detailed commit messages. Make it obvious what your commit does to change the code (don't add a meaningless message).
 
-5. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fufills the issue.
+5. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fixes the issue.
 
-6. Read the docs. I have gathered almost all of my information from the Github documentation. If you are ever unsure, try reading the official documentation first.
+6. Read the docs. I have gathered almost all of my information from the official Github documentation. If you are ever unsure or would like to know about more powerful features, try reading the documentation first.
 
 ###### TODO: add links for each section of the git proess and submit issues to this repo.
