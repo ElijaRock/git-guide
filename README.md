@@ -228,11 +228,13 @@ Aptitude (apt) requires that you have elevated permissions when installing packa
 
 ### Using Git
 
-It's time to clone your first repository. Cloning allows you to have a local copy of the code in a repo on your machine.
+It's time to *clone* your first repository. Cloning allows you to have a local copy of the code from a repository on your machine. Essentially you are "downloading" the code.
 
-Open terminal and cd into a directory of your choice. Then, go to the top of the page on a Github repo and click on the `<> Code` green button, then click ssh and copy the link. Now you have to change the link like so:
+Open terminal and `cd` into a directory of your choice. Then, go to the top of the page on a Github repo that you would like to work on (if you don't have on you can create it yourself) and click on the `<> Code` green button, then click ssh and copy the link.
 
-###### TODO: Add example image
+![code](/images/code.png)
+
+Now you have to change the link like so:
 
 ```
 Before: git@github.com:<Example>/<Repository>.git
@@ -250,7 +252,11 @@ $ pwd
 /home/<user>/<Repository>
 ```
 
-By default you have cloned and are working on the `main` branch. ***NEVER*** commit to or push to the main branch directly. You must create your own branch to work on a repo. Watch closely, but do not follow these steps yet:
+By default you have cloned and are working on the `main` branch. ***NEVER*** commit to or push to the main branch directly.
+
+You can see which branch you are working on using `git status`. It should say something like "On branch main" at the top, along with other information I will explain later.
+
+You should create a working branch if there is only branch main. Watch closely, but do not follow these steps yet:
 
 ```
 $ git branch new-feature
@@ -267,9 +273,9 @@ main
 
 The star next to `new-feature` branch shows that I am currently working on it.
 
-Open a file on your computer, correct mistakes, add features, or make a new file. If you are using a file ending in `.md` and not sure how the syntax works, look up: "markdown syntax" (this is a markdown file, hence the .md file extension).
+Open or create a new file on your computer, then type anything you like. If you are using a file ending in `.md`, such as the one you are currently reading, and not sure how the syntax works, look up: "markdown syntax" (this is a markdown file, hence the .md file extension).
 
-If you want to see the changes you have made thus far you may type: `git diff` and it will highlight the differences between the original code and modified version.
+If you want to see the changes you have made thus far you may type: `git diff` and it will highlight the differences between the original code and modified version. You could also enter `git status` as a all-in-one command if you ever forget which one to run specifically. It will always give you a general overview of the changes and structure.
 
 There is one more configuration step before you can commit (you only have to do this once). Make sure your current working directory is inside of the git repo. Then, enter these commands:
 
@@ -282,15 +288,17 @@ $ git config user.signingkey </path/to/ssh/key>.pub
 
 Replace the last argument with the actual file path of your public key (mine would be `~/.ssh/<filename>.pub`).
 
-Now you can stage and commit the changes you have made to a repo. If you have added any files, you must type `git add -A` to add all files in the repo to be tracked. This command also stages the changes you have made to all files (kind of like a two in one). If you didn't run the previous command, you need to run `git add -u` to track the changes you made in only the currently tracked files (files you added won't be committed).
+Now you can stage and commit the changes you have made to a repo. If you have added any files (check with `git status`), they are untracked by default. You must type `git add -A` to add all files to the repo to be tracked. This command also stages the changes you have made to all files (kind of like a two in one).
 
-After you have staged your changes you can compare your branch and the upstream one before committing by doing the following (change `new-feature` to the name of your branch).
+If you didn't run the previous command, as in, you are editing files that are already being tracked, you only need to stage your changes by running `git add -u`. However, `git add -A` will always work for either case, and you will be using it most of the time, but it's good to be familiar with both.
+
+After you have staged your changes you can compare your current branch with the upstream one before committing by doing the following (change `new-feature` to the name of your branch).
 
 ```
 git diff new-feature origin/new-feature
 ```
 
-You can now commit to the repo:
+In this command, "origin" means the url of the Github repo. In other words you are telling `git` to look at what is on the website and then compare it with what is on your computer. If there is no difference that means you haven't correctly staged your changes (you could also run `git status` for a more simple, general overview). You can now commit to the repo:
 
 ```
 $ git commit -S -m 'This is a short message describing the changes I have made' -m 'This is a longer more thourough description of the changes made'
