@@ -213,18 +213,18 @@ Success! If you have not yet changed your `~/.ssh/config` file to include your a
 
 ### Installing Git
 
-Depending on which operating system you use, there may or may not be a package manager installed by default. Gone are the days of searching for apps on google and clicking on scetchy links, you will be using a package manager from now on.
+Depending on which operating system you use, there may or may not be a *package manager* installed by default. A package manager does all the heavy work for you, preventing the need to search for applications on the internet. I will now show you how it works to seamlessly and efficiently install apps.
 
 On Ubuntu and WSL (Windows) systems, a package manager `apt` is included by default. On MacOS, you will need to install `brew` by following the steps on the [brew homepage](https://brew.sh/).
 
-Once you have successfully installed a package manager, you can then install git with the following command (depending on your operating system):
+Once you have successfully installed a package manager, you can then install `git` with the following command (depending on your operating system):
 
 ```
-user@ubuntu$ sudo apt install git
+user@ubuntu/windows$ sudo apt install git
 user@mac$ brew install git
 ```
 
-Aptitude (apt) requires that you have elevated permissions when installing packages, which requires you to preceed it with the `sudo` command and enter your password to confirm. You may need access to an administrator account on your computer to execute some of these commands.
+Aptitude (apt) requires that you have elevated permissions when installing packages, which requires you to preceed it with the `sudo` command ("Superuser Do") and enter your password to confirm. You may need access to an administrator account on your computer to execute some of these commands.
 
 ### Using Git
 
