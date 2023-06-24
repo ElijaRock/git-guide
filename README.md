@@ -182,23 +182,32 @@ Visit [https://github.com/](https://github.com/) and create an account with your
 
 ### Adding SSH key to account
 
-Click on your profile picture on Github and press settings. Then, on the left, find `SSH and GPG Keys`, click on it. Press `New SSH Key` and title it whatever you want. Key type: `Authentication Key`. Paste in the file contents of your public key: `<filename>.pub`. Repeat these steps but this time choose Signing Key.
+Click on your profile picture on Github and press settings. 
 
-Now you can test your keypair like so:
+![settings](/images/settings_edit.png)
+
+Then, on the left, find `SSH and GPG Keys`, click on it.
+
+![ssh_and_gpg_keys](/images/ssh_and_gpg_keys_edit.png)
+
+Press `New SSH Key` and title it whatever you want.
+
+![new_ssh_key](/images/new_ssh_key_edit.png)
+
+ Key type: `Authentication Key`. Paste in the file contents of your public key: `<filename>.pub`. Repeat these steps but this time choose Signing Key.
+
+![auth_key](/images/auth_key.png)
+
+![signing_key](/images/signing_key_edit.png)
+
+In total you will have added two keys. They both contain your `<filename>.pub` key but one has been setup as an authentication key and the other as signing. Now you can test your keypair like so (replacing \<Github Account Username\> with your actual Github account username):
 
 ```
 $ ssh -T git@github-<Github Account Username>
 Hi <Github Account Username>! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Success!
-
-If you get a prompt about a fingerprint and it asks you yes or no, say yes.
-
-
-###### TODO: Add image of what this looks like
-
-Now you should have two keys associated with your Github account, one for signing, and one for authentication (they are the same public key).
+Success! If you have not yet changed your `~/.ssh/config` file to include your actual github username, please do so now. You may get a prompt about a fingerprint and it will ask you to input yes or no, say yes.
 
 ## Part 6: Git
 
