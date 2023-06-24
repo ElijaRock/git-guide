@@ -1,6 +1,10 @@
 # Git Guide
 #### A comprehensive and simple beginner guide to using git as a version control system.
 
+-------------------------------------------
+
+### NOTICE: If at any point in this guide you want to skip a section that you are already familiar with, you can use the sidebar for navigation between the sections by clicking on the hamburger menu at the top left of this file (above the title and to the left of the filename).
+
 ## Part 1: What is Git and why use it?
 
 Don't worry about all of the details right away; everything will be explained later throughout the guide. The below image is a basic representation of a git tree (read from top to bottom). Each dot represents a *commit* which is sort of like saving your work in its current state. You can always revert to a previous commit if you make a mistake and lose your progress.
@@ -403,5 +407,3 @@ Now that you have the knowledge, I will let you know of some best practices that
 5. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fixes the issue.
 
 6. Read the docs. I have gathered almost all of my information from the official Github documentation. If you are ever unsure or would like to know about more powerful features, try reading the documentation first.
-
-###### TODO: add links for each section of the git proess and submit issues to this repo.
