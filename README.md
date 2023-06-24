@@ -332,13 +332,23 @@ You should now be able to see a list of commits including your own. If you have 
 
 ### Submit a Pull Request
 
-Now that you have finished working on the feature in your branch and extensively tested it, you are ready to merge it back into the main branch.
+Now that you have finished working on the feature in your branch and extensively tested it, you are ready to merge it back into the main, stable branch.
 
-Go to the `Pull Requests` tab at the top, and choose `New Pull Request`. At the top it will allow you to select the `new-feature` branch to be merged into `main`. Then provide a description and submit the request. Some repositories require that at least one other person (usually a specialized contributor) review the code in your request before giving the OK. Then, they can accept the request so your branch can be merged into main. Congrats!
+Go to the `Pull Requests` tab at the top bar of the repository page, and choose `New Pull Request`.
 
-###### TODO: add example image
+![pull_req](/images/pull_req.png)
 
-You may have also noticed an `Issues` tab on the repo. You should open any problems or inaccuracies that you find in this guide as an issue on the repo. Don't worry about it now, but in your pull request you can choose to close issues that the PR fixed.
+![new_pr](/images/new_pr.png)
+
+At the top it will allow you to select the `new-feature` branch to be merged into `main`. In my case, there is only one branch: `main` but yours will look a bit different.
+
+![merge_br](/images/merge_br.png)
+
+Then provide a description of the changes you have made and submit the request. Some repositories require that at least one other person (usually a specialized contributor) review the code in your request before giving the OK. Then, they can accept the request so your branch can be merged into main. Congrats!
+
+You may have also noticed an `Issues` tab on the repo page to the left of "pull requests". You should open an issue for any problems or inaccuracies that you find in this guide. Don't worry about it now, but in your pull request you can choose to close issues that the PR fixed.
+
+So essentially the workflow is that there can be an `issue` opened for a new feature or a bug. Then, someone creates a new branch for that feature or to fix the bug. Once that branch has been tested and is ready, a pull request can be submitted to merge that branch back into `main`. That's the idea!
 
 ### Fetch the Latest Changes and Merge
 
