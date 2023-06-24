@@ -138,9 +138,7 @@ If you are prompted to enter a password you can, or just leave it blank (it does
 
 Now you have files in the .ssh directory named `<filename>` and `<filename>.pub`. The key ending in `.pub` is your public key, the other (no extension) is your private and STAYS ON YOUR COMPUTER.
 
-We have to then tell Github to use your keypair. If you are confused as to the difference between Github and Git, let me explain. Git is a command line tool that allows you to branch, commit, and do other things (that I will show you later in this guide). Github is a website owned by Microsoft that hosts Git repositories (don't worry about what a repository is yet).
-
-You should now create a file in `.ssh` directory and name it `config`. Not `config.txt`. If you want to know how to do this from the terminal just do this:
+We have to then tell Git to use your keypair. You should now create a file in `.ssh` directory and name it `config`. Not `config.txt`. If you want to know how to do this from the terminal just do this:
 
 ```
 $ cd ~/.ssh
@@ -155,6 +153,8 @@ config   <filename>   <filename>.pub
 
 Of course you don't have to type `ls` but it's nice to know that you have successfully followed the guide thus far. Now you can edit the `config` file in your favorite text editor of choice, a good option is VSCode if you are not sure or haven't used one before.
 
+The following config file is an example that you should follow. You may not have a Github account yet so you can leave that part blank for now, but make sure that you come back to the config file to input your username where stated in the example.
+
 ```
 # ~/.ssh/config
 # Primary Github account
@@ -164,9 +164,17 @@ Host github-<Github Account Username>
 	IdentitiesOnly yes
 ```
 
-The lines preceeded with a `#` are comments to help you remember the purpose of this file and not required. Basically this tells Github to use our `<filename>` and `<filename>.pub` keypair when connecting to github.com. Just make sure to replace all instances of "github.com" with "github-\<Github Accound Username\>" when using a url with the former in it.
+The lines preceeded with a `#` are comments to help you remember the purpose of this file and not required. Basically this tells Github to use our `<filename>` and `<filename>.pub` keypair when connecting to github.com. Just make sure to replace all instances of "github.com" with "github-\<Github Account Username\>" when using a url with the former in it.
+
+For example, instead of "git@**github.com**:ElijaRock/git-guide.git", I would change the url to "git@**github-ElijaRock**:ElijaRock/git-guide.git". You will need to do this for your username that you setup in the config file in the future. Don't worry about the semantics yet as they will be explained in the next parts of this guide.
 
 ## Part 4: Creating a GitHub Account
+
+### What is Github?
+
+Throughout this guide I have mentioned `git` many times and now I am talking about Github. What's the difference? Well, `git` is the tool that you use to interface with repositories on the Github website, which is a cloud service that allows you to store many repositories.
+
+TLDR: `git` is the tool you work with; the results of using `git` are seen on the Github website. There is no "Git" website, and there is no `github` command in the terminal, it's the other way around.
 
 ### Account Creation
 
