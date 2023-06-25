@@ -100,7 +100,7 @@ You now know how to move around in the terminal.
 
 If you have taken a Computer Science class prior to reading this guide, then you may remember asymmetric encryption.
 
-If you don't, I will try to provide a simple example. I start by generating a keypair: two keys that are mathematically linked. One key is public and is known by everyone. The other is private and must not be distributed.
+If you don't, I will provide a simple example. I start by generating a keypair: two keys that are mathematically linked. A key consists of randomly generated symbols and letters that would be difficult to guess. One key is public and is known by everyone. The other is private and must not be distributed.
 
 If my friend wants to send me a message, they can encrypt it with my public key (which everyone has). Now, the message is garbled gibberish and makes no sense to anyone (kind of like how an enigma machine works). This means if someone with mal-intent were to intercept this message, it would be of no use to them.
 
@@ -122,21 +122,19 @@ A repository is a cloud location that stores your projects and tracks their hist
 
 Open the terminal and type `cd ~`, (`~` is an alias for "home" and in my case really translates to "/home/eli"), although you proabably are already in the home directory (you will know if you run `pwd`).
 
-Now that you are home you should type `ls --all` which will list all files and folders (hence `--all`). Once again `--all` is an option for the `ls` command that takes 0 arguments. Once again, most command-line options also have a shorter, one letter counterpart. They are usually preceeded by a single `-` in their one letter form: `ls -a`. These options are functionally equiavalent. If you would like to see more options for a specific command, such as `ls`, you can succeed it with a `--help` or `-h` option. If you already see a directory named `.ssh`, skip the next step.
+Now that you are home you should type `ls --all` which will list all files and folders (hence `--all`). When you use the option `--all`, 0 arguments will follow. Once again, most command-line options also have a shorter, one letter counterpart. They are usually preceeded by a single `-` in their one letter form: `ls -a`. These options are functionally equiavalent. If you would like to see more options for a specific command, such as `ls`, you can follow it with a `--help` or `-h` option. If you already see a directory named `.ssh` (after executing `ls --all`), skip the next step.
 
-To create a new directory, enter the command `mkdir .ssh`. This **makes** a **directory** under your current working directory called `.ssh`. Now you should run `ls -a` and see a directory named `.ssh` in the list of files and folders.
+If you do not see a `.ssh` directory, enter the command `mkdir .ssh`. This **makes** a **directory** under your current working directory called `.ssh`. Now you should run `ls -a` and see a directory named `.ssh` in the list of files and folders.
 
-You will need to generate an ssh keypair. To do this you will need to enter the following command:
+Now that everyone has an empty `.ssh` directory, you will need to generate an ssh keypair. To do this you will need to enter the following command, replacing the text in "\<filename\>" with a name of your choice without spaces and \<your_email_address\> with your actual email address:
 
 ```
 ssh-keygen -a 100 -t ed25519 -f ~/.ssh/<filename> -C <your_email_address>
 ```
 
-Replace "\<filename\>" with whatever you want to call your keypair and the last argument with your email address.
+`-a` is an option that specifies the number of rounds of KDF (key derivation function) to be used. A higher number of rounds means the random strings are more secure; 100 is plenty. `-t` allows you to pick the type of function used to generate the keypair. We are using ed25519 because it is secure, convenient, and fast. `-f` lets you pick where to store the keypair and `-C` allows you to type out the email address that you will be identified with.
 
-`-a` specifies the number of rounds of KDF (key derivation function) to be used. A higher number of rounds means more secure; 100 is plenty. `-t` allows you to pick the type of function used to generate the keypair. We are using ed25519 because it is secure, convenient, and fast. `-f` lets you pick where to store the keypair and `-C` allows you to type out the email address that you will be identified with.
-
-If you are prompted to enter a password you can, or just leave it blank (it doesn't really matter which one you choose). However, if you are using a shared device I ***HIGHLY*** suggest you use a strong password.
+If you are prompted to enter a password, you can, or just leave it blank (it doesn't really matter which one you choose). However, if you are using a shared device I ***HIGHLY*** suggest you use a strong password.
 
 Now you have files in the .ssh directory named `<filename>` and `<filename>.pub`. The key ending in `.pub` is your public key, the other (no extension) is your private and STAYS ON YOUR COMPUTER.
 
@@ -166,7 +164,7 @@ Host github-<Github Account Username>
 	IdentitiesOnly yes
 ```
 
-The lines preceeded with a `#` are comments to help you remember the purpose of this file and not required. Basically this tells Github to use our `<filename>` and `<filename>.pub` keypair when connecting to github.com. Just make sure to replace all instances of "github.com" with "github-\<Github Account Username\>" when using a url with the former in it.
+The lines preceeded with a `#` are comments to help you remember the purpose of this file and not required. Basically this tells Git to use our `<filename>` and `<filename>.pub` keypair when connecting to github.com. Just make sure to replace all instances of "github.com" with "github-\<Github Account Username\>" when using a url with the former in it.
 
 For example, instead of "git@**github.com**:ElijaRock/git-guide.git", I would change the url to "git@**github-ElijaRock**:ElijaRock/git-guide.git". You will need to do this for your username that you setup in the config file in the future. Don't worry about the semantics yet as they will be explained in the next parts of this guide.
 
@@ -176,7 +174,7 @@ For example, instead of "git@**github.com**:ElijaRock/git-guide.git", I would ch
 
 Throughout this guide I have mentioned `git` many times and now I am talking about Github. What's the difference? Well, `git` is the tool that you use to interface with repositories on the Github website, which is a cloud service that allows you to store many repositories.
 
-TLDR: `git` is the tool you work with; the results of using `git` are seen on the Github website. There is no "Git" website, and there is no `github` command in the terminal, it's the other way around.
+TLDR: `git` is the tool you work with; the results of using `git` are seen on the Github website.
 
 ### Account Creation
 
@@ -196,13 +194,15 @@ Press `New SSH Key` and title it whatever you want.
 
 ![new_ssh_key](/images/new_ssh_key_edit.png)
 
- Key type: `Authentication Key`. Paste in the file contents of your public key: `<filename>.pub`. Repeat these steps but this time choose Signing Key.
+ Key type: `Authentication Key`. Paste in the file contents of your public key (located in your `.ssh` folder): `<filename>.pub`. After doing this, we will repeat these steps but instead choose Signing Key.
 
 ![auth_key](/images/auth_key.png)
 
 ![signing_key](/images/signing_key_edit.png)
 
-In total you will have added two keys. They both contain your `<filename>.pub` key but one has been setup as an authentication key and the other as signing. Now you can test your keypair like so (replacing \<Github Account Username\> with your actual Github account username):
+In total you will have added two keys. An authentication key is used if you are working on a private repository. This means that the people who created the repository only want specific trusted people to be able to view it, meaning you will need this key to gain access to the repository.
+
+The signing key is used to sign your commits. This means that everyone knows you are the person who made the commit and not somebody posing as you. Now you can test your keypair like so (replacing \<Github Account Username\> with your actual Github account username):
 
 ```
 $ ssh -T git@github-<Github Account Username>
@@ -211,7 +211,7 @@ Hi <Github Account Username>! You've successfully authenticated, but GitHub does
 
 Success! If you have not yet changed your `~/.ssh/config` file to include your actual github username, please do so now. You may get a prompt about a fingerprint and it will ask you to input yes or no, say yes.
 
-## Part 6: Git
+## Part 5: Git
 
 ### Installing Git
 
@@ -390,7 +390,7 @@ Now I am on the latest version of the branch `new-feature` and can track and com
 
 I will remind you again that you only need to clone the repo once; always use fetch to grab the newest changes. Also, `git` has many many more features than specified here and can be used to do even more powerful things.
 
-## Part 7: Best Practices
+## Part 6: Best Practices
 
 Now that you have the knowledge, I will let you know of some best practices that I learned in the time that I have used git.
 
