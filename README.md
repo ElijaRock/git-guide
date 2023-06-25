@@ -215,94 +215,93 @@ Success! If you have not yet changed your `~/.ssh/config` file to include your a
 
 ### Installing Git
 
-Depending on which operating system you use, there may or may not be a *package manager* installed by default. A package manager does all the heavy work for you, preventing the need to search for applications on the internet. I will now show you how it works to seamlessly and efficiently install apps.
+Depending on which operating system you use, there may or may not be a *package manager* installed by default. A package manager does all the heavy work for you, preventing the need to search for applications on the internet.
 
 On Ubuntu and WSL (Windows) systems, a package manager `apt` is included by default. On MacOS, you will need to install `brew` by following the steps on the [brew homepage](https://brew.sh/).
 
-Once you have successfully installed a package manager, you can then install `git` with the following command (depending on your operating system):
+Once you have a package manager, you can then install `git` with the following command (depending on your operating system):
 
-```
-user@ubuntu/windows$ sudo apt install git
-user@mac$ brew install git
-```
+For Ubuntu and Windows users: `$ sudo apt install git`
+
+For MacOS Users: `$ brew install git`
 
 Aptitude (apt) requires that you have elevated permissions when installing packages, which requires you to preceed it with the `sudo` command ("Superuser Do") and enter your password to confirm. You may need access to an administrator account on your computer to execute some of these commands.
 
-### Using Git
+### Using Git to Clone a Repository
 
-It's time to *clone* your first repository. Cloning allows you to have a local copy of the code from a repository on your machine. Essentially you are "downloading" the code.
+It's time to *clone* your first repository (repo). Cloning allows you to have a local copy of the code from a repository on your machine. Essentially you are "downloading" the code.
 
-#### NOTE: You only need to clone a repository ONCE. Never use clone to grab the new changes, but the second time onward you will use "fetch". This will be explained later.
+#### NOTE: You only need to clone a repository ONCE.
 
-Open terminal and `cd` into a directory of your choice. Then, go to the top of the page on a Github repo that you would like to work on (if you don't have on you can create it yourself) and click on the `<> Code` green button, then click ssh and copy the link.
+Open terminal and `cd` into a directory of your choice. Then, go to the top of the page on a Github repo that you would like to work on (if you don't have one you can create it yourself) and click on the `<> Code` green button, then click ssh and copy the link.
 
 ![code](/images/code.png)
 
-Now you have to change the link like so:
-
-```
-Before: git@github.com:<Example>/<Repository>.git
-After: git@github-<Github Account Username>:<Example>/<Repository>.git
-```
+Now you have to change the link. In my case, I am working on the "git-guide" repo and my username is "ElijaRock", therefore it looks like this: `git@github.com:ElijaRock/git-guide.git`. You should change it to look like the following: `git@github-ElijaRock:ElijaRock/git-guide.git`. I have changed the part that says "github.com" to "github-ElijaRock". This allows us to use our authentication key to gain access to the (private) repository. This is not necessary for a public repository but is still good practice.
 
 Now you can type this into your terminal (replacing my Github username with yours):
 
 ```
-$ git@github-<Github Account Username>:<Example>/<Repository>.git
+$ git clone git@github-ElijaRock:ElijaRock/git-guide.git
 $ ls
-<Repository>
-$ cd <Repository>
-$ pwd
-/home/<user>/<Repository>
+git-guide
+$ cd git-guide
 ```
 
-By default you have cloned and are working on the `main` branch. ***NEVER*** commit to or push to the main branch directly.
+Now I am in the "git-guide" directory.
 
-You can see which branch you are working on using `git status`. It should say something like "On branch main" at the top, along with other information I will explain later.
-
-You should create a working branch if there is only branch main. Watch closely, but do not follow these steps yet:
-
-```
-$ git branch new-feature
-$ git checkout new-feature
-```
-
-I have created a new branch called `new-feature`. You should create a branch with whatever name you want (don't use spaces in the name). Then I use `git checkout` to switch to working on that branch. You can then use `git branch` with no arguments to see which branch you are working on.
-
-```
-$ git branch
-main
-* new-feature
-```
-
-The star next to `new-feature` branch shows that I am currently working on it.
-
-Open or create a new file on your computer, then type anything you like. If you are using a file ending in `.md`, such as the one you are currently reading, and not sure how the syntax works, look up: "markdown syntax" (this is a markdown file, hence the .md file extension).
-
-If you want to see the changes you have made thus far you may type: `git diff` and it will highlight the differences between the original code and modified version. You could also enter `git status` as a all-in-one command if you ever forget which one to run specifically. It will always give you a general overview of the changes and structure.
-
-There is one more configuration step before you can commit (you only have to do this once). Make sure your current working directory is inside of the git repo. Then, enter these commands:
+You must now tell git some information so it can properly identify you (you need to be inside of the cloned repo to do this):
 
 ```
 $ git config user.name '<your name>'
 $ git config user.email '<your email address>'
 $ git config gpg.format ssh
-$ git config user.signingkey </path/to/ssh/key>.pub
+$ git config user.signingkey ~/.ssh/<filename>.pub
 ```
 
-Replace the last argument with the actual file path of your public key (mine would be `~/.ssh/<filename>.pub`).
+Replace "\<your name\>" with your name, "\<your email address\>" with your email address, and "\<filename\>" with the name of your keypair. Make sure you are using the key ending in ".pub" (your public key).
 
-Now you can stage and commit the changes you have made to a repo. If you have added any files (check with `git status`), they are untracked by default. You must type `git add -A` to add all files to the repo to be tracked. This command also stages the changes you have made to all files (kind of like a two in one).
+You are now working in your cloned repo, on the `main` branch. ***NEVER*** commit to or push to the main branch directly. We want to protect the stability of the main branch.
 
-If you didn't run the previous command, as in, you are editing files that are already being tracked, you only need to stage your changes by running `git add -u`. However, `git add -A` will always work for either case, and you will be using it most of the time, but it's good to be familiar with both.
+You can see which branch you are working on using `git status`. It should say something like "On branch main" at the top, along with other information I will explain later.
 
-After you have staged your changes you can compare your current branch with the upstream one before committing by doing the following (change `new-feature` to the name of your branch).
+You should create another branch if there is only branch main.
+
+The first line creates a new branch called `new-feature`. You can call your new branch whatever you like, but there cannot be spaces (use the `-` instead). The second line switches from the `main` branch to the `new-feature` branch so you can start working on it without changing `main`.
+
+```
+$ git branch new-feature
+$ git checkout new-feature
+```
+If you run `git status` again, this time it should say "On branch new-feature" since in the use case above, that's what I called my new branch. If you call your new branch something else, that name should appear.
+
+If you would like to see a list of the existing branches at any time you can run `git branch`.
+
+You can start working/coding inside of your branch.
+
+### Tracking and staging your changes
+
+If you want to see the changes you have made thus far type: `git diff` and it will highlight the differences between the original code and modified version.
+
+Now you must *track* and/or *stage*, then commit the changes you have made to a repo. Files need to be tracked so that Git will see them. You track new files, but if you modify a file that is already tracked, what you are doing is called staging. Although these are two different names, you only have to run one command for either tracking and/or staging.
+
+By default, any new files you create in the branch are untracked. That means that if you make a commit they will not show up and only stay on your machine. To track and stage a new file, you can type `git add <filename>`, followed by the actual file name. This can get tedious if you are adding a lot of new files, so you can also type `git add --all` which will track and stage the new files you have added.
+
+There may also be some files on your computer that are already tracked. These need to be staged if you have made any modifications to them. In addition to tracking the newly created files, `git add <filename>` or `git add --all` commands can be used to stage the existing, modified ones. 
+
+After you have tracked and staged your changes, you might be interested to see what the repo will look like before you commit. You can compare the branch on your computer with the one on the Github website by doing the following (change `new-feature` to the name of your branch).
 
 ```
 git diff new-feature origin/new-feature
 ```
 
-In this command, "origin" means the url of the Github repo. In other words you are telling `git` to look at what is on the website and then compare it with what is on your computer. If there is no difference that means you haven't correctly staged your changes (you could also run `git status` for a more simple, general overview). You can now commit to the repo:
+In this command, "origin" is shorthand for the url of the Github repo. In other words you are telling `git` to look at what is on the website and then compare it with what is on your computer. If it shows differences, that means you have properly staged your changes.
+
+### Committing to the Repo
+
+You can now commit to the repo. The `-S` option for the commit will sign it with your signing key. Then, type `-m` option to create a title for the commit. You should describe what you have changed in a few words here. If needed, you should use another `-m` option to provide a longer description of what you have done.
+
+As noted in the example below, messages need to be enclosed in single quotes:
 
 ```
 $ git commit -S -m 'This is a short message describing the changes I have made' -m 'This is a longer, more thorough description of the changes made'
@@ -310,23 +309,21 @@ $ git commit -S -m 'This is a short message describing the changes I have made' 
 
 You can ommit the second `-m` or "message" option if you have only made small, incremental changes. The `-S` option allows you to sign the commit with your signing key, in other words we can verify that **YOU** made these changes (in the case of identity theft). That is why it's so important to not give your private key to anyone ever.
 
-The last step is to *push* the commit to the branch you are working on. Now that the commit is on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it and *fetch* it. Type:
+The last step is to *push* the commit to the branch you are working on. Now that the commit is on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it. Type (remember to replace `new-feature` with your branch name):
 
 ```
 $ git push origin new-feature
 ```
 
-This pushes it to my new branch that I made and now I will be able to see the changes on the website. The `origin` part is shorthand for the github url, so it basically means go to this repository's link and find the new-feature branch then push changes/commits to it.
+This pushes it to the branch that you specified and now we all will be able to see the changes on the website.
 
-Now visit the repository on github.com, go to the top left where is says you are on the main branch, and switch to `new-feature` branch. There will be more than one branch in your case (in the example image there is only `main`).
+Now visit the repository on github.com, go to the top left where is says you are on the main branch, and switch to `new-feature` branch. The checkmark will move from `main` to `new-feature`.
 
-![new_feature_branch](/images/new_branch.png)
-
-The website will refresh and you can click on the top right it should say `x commits` below the `code` button you found earlier, in my case I will click on where it says "15 commits".
+The website will refresh automatically and you should click on the `x commits`. x=the number of commits that have been made. It will be located below the `code` button you found earlier.
 
 ![x_commits](/images/x_commits.png)
 
-You should now be able to see a list of commits including your own. If you have set up your ssh key correctly there will be a green `verified` bubble on the right side of your commit. In the top left of the image, you can see that I am on the main branch; however, you should be on your new branch.
+You should now be able to see a list of commits including your own. If you have set up your ssh key correctly there will be a green `Verified` bubble on the right side of your commit. At the top left of the image, you can see that I am on the main branch; however, you should be on your new branch.
 
 ![commits_list](/images/commits_list.png)
 
