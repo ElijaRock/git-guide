@@ -1,13 +1,15 @@
 # Git Guide
-#### A comprehensive and simple beginner guide to using git as a version control system.
+#### A comprehensive and simple beginner's guide to using git as a version control system.
 
 -------------------------------------------
 
-### NOTICE: If at any point in this guide you want to skip a section that you are already familiar with, you can use the sidebar for navigation between the sections by clicking on the hamburger menu at the top left of this file (above the title and to the left of the filename).
+### NOTICE: If at any point reading this guide you want to skip a section that you are already familiar with, click on the hamburger menu at the top left of this file (above the title and to the left of the filename).
 
 ## Part 1: What is Git and why use it?
 
-Don't worry about all of the details right away; everything will be explained later throughout the guide. The below image is a basic representation of a git tree (read from top to bottom). Each dot represents a *commit* which is sort of like saving your work in its current state. You can always revert to a previous commit if you make a mistake and lose your progress.
+Git allows different people in different locations to contribute to a project in a centralized location. The project is usually stored on a website, and can be modified through a tool known as `git`. This tool also preserves project history, so every version of the project can be accessed at any time.
+
+These project "versions" are known as *commits*. You can always revert to a previous commit if you make a mistake and lose your progress.
 
 This commit is done to a *branch*. Think of branches as a slightly different version of the project. For example, you might want to have a `stable` branch that gets updated infrequently in order to have a stable version of the code. Then a `testing` branch can be used to test and implement new features.
 
@@ -15,15 +17,15 @@ The commits in the image contain messages informing the team about the purpose o
 
 ![Example Graph](/images/example_graph.png)
 
-Now that you have a basic understanding of what Git is, the next parts will help guide you through the setup process.
+Now that you have a basic understanding of what Git is, the following parts will help guide you through the setup process.	
 
 ## Part 2: The Terminal
 
-### NOTICE: If you are using a Windows computer you will need to configure WSL (version 2) to follow the rest of the guide from here on: https://learn.microsoft.com/en-us/windows/wsl/install. You should just be able to run `wsl --install` from powershell as an administrator.
+### NOTICE: If you are using a Windows computer you will need to configure WSL (version 2) to follow the rest of the guide from here on. You should be able to run `wsl --install` from powershell as an administrator (click on: https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ### Basic Syntax
 
-Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer. This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
+Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer (terminal for short). This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
 
 ```
 $ git commit --message 'Added methods for telemetry'
@@ -31,24 +33,20 @@ $ git commit --message 'Added methods for telemetry'
 
 The `$` indicates the start of the line for a command to be entered by the user. It is not typed by the user but will exist on its own line in the terminal emulator by default. If the line is blank, then your terminal emulator is already executing a task and not ready for user input.
 
-The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the shell that you would like to make a new git commit.
+The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the terminal that you would like to make a new git commit. Now you can finish the command by hitting the enter key and you have made a git commit. However, as I said earlier, it is good practice to include an optional message describing the purpose of the commit.
 
-Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` and then one or more words. In this case, `--message` tells the `git commit` to include a message. The message content is then typed after the message option. To reiterate you are specifying an option that takes one argument: the content of your message. If there is an option with multiple words it will probably look something like this: `--option-with-multiple-words`.
+Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` followed by one or more words. In this case, `--message` tells the `git commit` to include a message. If there is an option with multiple words it will probably look something like this: `--option-with-multiple-words`.
 
-Since arguments are seperated by a space in bash, the message argument must be in quotes or only the first word will be taken as the message. ie:
+Since arguments are seperated by a space in bash, the message argument must start and end with a single quote mark or only the first word will be taken as the message. ie:
 
-```
-$ git commit -m Added methods for telemetry
-$ git commit -m 'Added methods for telemetry'
-```
-
-The commit message of the first command is "Added", while the commit message of the second command is "Added methods for telemetry". The messsage option will only take one argument.
+`$ git commit -m Added methods for telemetry` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Incorrect**\
+`$ git commit -m 'Added methods for telemetry'` &nbsp; **Correct**
 
 ### Navigation
 
 Feel free to follow along in your own computer's terminal emulator during this section.
 
-The following paragraphs explain how to access a *bash* shell from your operating system. This is an interactive prompt that allows the user to enter commands in the bash language.
+The following paragraphs explain how to access a bash *shell* from your operating system. A shell runs inside of your terminal emulator and is what you interface with when typing out commands.
 
 On a Windows computer you can search for "powershell" (don't run as administrator this time) and type `wsl` followed by the enter key. If the command hangs or is not found, that means you haven't set up WSL correctly and you must go back to the previous step to try again.
 
@@ -56,7 +54,7 @@ On MacOS search for the "terminal" app.
 
 On Ubuntu search for "terminal".
 
-When you first open your terminal emulator, there might be a message at the top. Below that message you should see somthing like:
+When you first open your terminal emulator, there might be a message at the top. Below that message you should see your computer's username followed by a special symbol, usually a dollar sign. In my case, it looks like this:
 
 ```
 eli@laptop$
@@ -64,7 +62,7 @@ eli@laptop$
 
 Depending on what operating system you are using, this might look a bit different than mine (eg: a `%` symbol for macos). You may start typing your commands after the `$`, `%`, `>` or whatever other symbol is present. This is the indicator that lets you know the shell has finished executing its previous process and is ready for more input. If there is no symbol present then the terminal is currently executing a previous command and is not ready for you to type input.
 
-I will now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. You do not have to type it yourself. The first command I would like you to type is `pwd`:
+I will now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. It should appear automatically. You will see a `$` after your username and this is where you are meant to start typing your command. If you do not see a `$`, then that line is the output of the command. Don't get confused when you see a slightly different output. Ie: mine will say "eli" because that is my username. The first command I would like you to type is `pwd`:
 
 ```
 $ pwd
@@ -84,7 +82,7 @@ Desktop   Documents   Downloads   Git-Guide.txt   Music   Pictures   Public   Vi
 
 Note that this command lists everything in the current directory, including files. Your terminal might show the directories in bold, or they might be a different color to separate them from the files.
 
-Now that you are aware of the folders inside (I'll call them subdirectories from now on) use `cd` to **change** **directories** (hence "cd"). This command takes a single argument unlike `ls`; you need to type the name of the directory to change to (case matters).
+Now that you are aware of the folders inside (I'll call them subdirectories from now on) use `cd` to **change** **directories**. This command takes a single argument unlike `ls`; you need to type the name of the directory to change to (case sensitive).
 
 ```
 $ cd Downloads
