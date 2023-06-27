@@ -3,7 +3,9 @@
 
 -------------------------------------------
 
-### NOTICE: If at any point reading this guide you want to skip a section that you are already familiar with, click on the hamburger menu at the top left of this file (above the title and to the left of the filename).
+### NOTICE: If at any point reading this guide you want to skip a section that you are already familiar with, click on the hamburger menu at the top left of this file (above the title and to the left of the filename, see example below).
+
+![hamburger](/images/hamburger.webp)
 
 ## Part 1: What is Git and why use it?
 
