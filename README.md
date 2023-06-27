@@ -331,7 +331,7 @@ You should now be able to see a list of commits including your own. If you have 
 
 ### Submit a Pull Request
 
-Now that you have finished working on the feature in your branch and extensively tested it, you are ready to merge it back into the main, stable branch.
+If you feel that your branch has been extensively tested and is stable, you are ready to merge it back into the `main` branch.
 
 Go to the `Pull Requests` tab at the top bar of the repository page, and choose `New Pull Request`.
 
@@ -339,39 +339,41 @@ Go to the `Pull Requests` tab at the top bar of the repository page, and choose 
 
 ![new_pr](/images/new_pr.png)
 
-At the top it will allow you to select the `new-feature` branch to be merged into `main`. In my case, there is only one branch: `main` but yours will look a bit different.
+At the top it will allow you to select the `new-feature` branch to be merged into `main` (see below). In my case, there is only one branch: `main` but yours will say "compare: new-feature to base: main" if your branch name is `new-feature`.
 
 ![merge_br](/images/merge_br.png)
 
 Then provide a description of the changes you have made and submit the request. Some repositories require that at least one other person (usually a specialized contributor) review the code in your request before giving the OK. Then, they can accept the request so your branch can be merged into main. Congrats!
 
-You may have also noticed an `Issues` tab on the repo page to the left of "pull requests". You should open an issue for any problems or inaccuracies that you find in this guide. Don't worry about it now, but in your pull request you can choose to close issues that the PR fixed.
+-------------------------------
 
-So essentially the workflow is that there can be an `issue` opened for a new feature or a bug. Then, someone creates a new branch for that feature or to fix the bug. Once that branch has been tested and is ready, a pull request can be submitted to merge that branch back into `main`. That's the idea!
+You may have also noticed an `Issues` tab on the repo page to the left of "pull requests". You should open an issue for any problems or inaccuracies that you find in this guide.
+
+So essentially the workflow is that there can be an `issue` opened for a new feature or a bug. Then, someone creates a new branch to work on the issue. Once that branch has been tested and is ready, a pull request can be submitted to merge that branch back into `main`. In the pull request, you will specify the issues that it fixes in order to close them.
 
 ### Fetch the Latest Changes and Merge
 
-Suppose someone on your team worked on your branch while you were gone to help implement the feature. Before you start making changes again, you need to fetch theirs. Do this by running the following command:
+Suppose someone on your team worked on your branch while you were gone to help implement the feature. Before you start making changes on your computer again, you need to fetch their changes so you have the modified files. Do this by running the following command:
 
 ```
 $ git fetch origin new-feature
 ```
 
-Now you have their changes to compare to your branch, and need to review them before following through. (This basically works like reloading a website to see what's new).
+Now you have their changes to compare to the branch on your computer, and need to review them before replacing the files on your computer with the new ones from the repo online.
 
-If you want to see the difference between your `new-feature` branch and the repos up to date `new-feature` branch, run this command:
+If you want to see the difference between the `new-feature` branch on your computer and the repository's up-to-date `new-feature` branch, run this command:
 
 ```
 $ git diff new-feature origin/new-feature
 ```
 
-You are now looking at the changes your team member made to your branch compared to the one you had from before. If you like these changes, you can merge them into your current copy of the branch on your computer. Actually you can use merge or rebase, if you would like to see the difference, take a look at [this link](https://www.atlassian.com/git/tutorials/merging-vs-rebasing). In this case I will rebase the changes they made onto the directory I am working in.
+You are now looking at the changes your team member made to your branch compared to the one you had from before. If you like these changes, you can replace the current copy of the branch on your computer with the new version. This is called "rebasing". You can do the following:
 
 ```
 $ git rebase origin/new-feature
 ```
 
-You may get an error that you need to stash your changes before a merge or rebase. This happens if you made changes and forgot to commit them. Git allows you to keep your changes in a special safe place called "stash" while having the latest version of the branch to work on.
+You may get an error that you need to stash your changes before a rebase. This happens if you made changes and forgot to commit them. Git allows you to keep your changes in a special safe place called "stash" while having the latest version of the branch to work on.
 
 ```
 $ git stash
@@ -389,16 +391,16 @@ I will remind you again that you only need to clone the repo once; always use fe
 
 ## Part 6: Best Practices
 
-Now that you have the knowledge, I will let you know of some best practices that I learned in the time that I have used git.
+Now that you have the background knowledge, I will let you know of some best practices that I learned in the time that I have used git.
 
 1. If ever in doubt run `git status`. This will give you valuable information on the current state of the git repo on your computer, changes you have made, etc.
 
 2. Do not make changes to the main branch. The code on this branch is stable, tested, and reliable.
 
-3. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and merge/rebase to resolve the conflicts instead.
+3. Do not force push other people's code off the repo. As annoying as it may be to deal with merge conflicts (you'll experience these at some point), do not force push your own code. Make sure to fetch and rebase to resolve the conflicts instead.
 
-4. Detailed commit messages. Make it obvious what your commit does to change the code (don't add a meaningless message).
+4. Write detailed commit messages. Make it obvious what your commit does to change the code (don't add a meaningless message).
 
-5. Use the builtin issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fixes the issue.
+5. Use the built-in issues feature. Get in the habit of submitting proper bug reports as an issue and document what you did and what didn't work. You can also use a `feature-request` tag on your issue to request a new feature, which can later be closed in the pull request that fixes the issue.
 
-6. Read the docs. I have gathered almost all of my information from the official Github documentation. If you are ever unsure or would like to know about more powerful features, try reading the documentation first.
+6. Read the docs. I have gathered almost all of my information from the [official Github documentation](https://docs.github.com/en). If you are ever unsure or would like to know about more powerful features, try reading the documentation first.
