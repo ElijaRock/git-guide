@@ -29,7 +29,7 @@ Now that you have a basic understanding of what Git is, the following parts will
 
 Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer (terminal for short). This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
 
-```console
+```shell
 $ git commit --message 'Added methods for telemetry'
 ```
 
@@ -58,7 +58,7 @@ On Ubuntu search for "terminal".
 
 When you first open your terminal emulator, there might be a message at the top. Below that message you should see your computer's username followed by a special symbol, usually a dollar sign. In my case, it looks like this:
 
-```console
+```shell
 eli@laptop$
 ```
 
@@ -66,7 +66,7 @@ Depending on what operating system you are using, this might look a bit differen
 
 I will now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. It should appear automatically. You will see a `$` after your username and this is where you are meant to start typing your command. If you do not see a `$`, then that line is the output of the command. Don't get confused when you see a slightly different output. Ie: mine will say "eli" because that is my username. The first command I would like you to type is `pwd`:
 
-```console
+```shell
 $ pwd
 /home/eli
 ```
@@ -77,7 +77,7 @@ This command **prints** the current **working** **directory**. You are basically
 
 If you would like to see the folders and files that are inside of your current folder (kind of like a file manager), you can **list** them with `ls`.
 
-```console
+```shell
 $ ls
 Desktop   Documents   Downloads   Git-Guide.txt   Music   Pictures   Public   Videos
 ```
@@ -86,7 +86,7 @@ Note that this command lists everything in the current directory, including file
 
 Now that you are aware of the folders inside (I'll call them subdirectories from now on) use `cd` to **change** **directories**. This command takes a single argument unlike `ls`; you need to type the name of the directory to change to (case sensitive).
 
-```console
+```shell
 $ cd Downloads
 $ pwd
 /home/eli/Downloads
@@ -130,7 +130,7 @@ If you do not see a `.ssh` directory, enter the command `mkdir .ssh`. This **mak
 
 Now that everyone has an empty `.ssh` directory, you will need to generate an ssh keypair. To do this you will need to enter the following command, replacing the text in "\<filename\>" with a name of your choice without spaces and \<your_email_address\> with your actual email address:
 
-```console
+```shell
 $ ssh-keygen -a 100 -t ed25519 -f ~/.ssh/<filename> -C <your_email_address>
 ```
 
@@ -142,7 +142,7 @@ Now you have files in the .ssh directory named `<filename>` and `<filename>.pub`
 
 We have to then tell Git to use your keypair. You should now create a file in `.ssh` directory and name it `config`. Not `config.txt`. If you want to know how to do this from the terminal just do this:
 
-```console
+```shell
 $ cd ~/.ssh
 $ pwd
 /home/eli/.ssh
@@ -157,7 +157,7 @@ Of course you don't have to type `ls` but it's nice to know that you have succes
 
 The following config file is an example that you should follow. You may not have a Github account yet so you can leave that part blank for now, but make sure that you come back to the config file to input your username where stated in the example.
 
-```console
+```shell
 # ~/.ssh/config
 # Primary Github account
 Host github-<Github Account Username>
@@ -206,7 +206,7 @@ In total you will have added two keys. An authentication key is used if you are 
 
 The signing key is used to sign your commits. This means that everyone knows you are the person who made the commit and not somebody posing as you. Now you can test your keypair like so (replacing \<Github Account Username\> with your actual Github account username):
 
-```console
+```shell
 $ ssh -T git@github-<Github Account Username>
 Hi <Github Account Username>! You've successfully authenticated, but GitHub does not provide shell access.
 ```
@@ -243,7 +243,7 @@ Now you have to change the link. In my case, I am working on the "git-guide" rep
 
 Now you can type this into your terminal (replacing my Github username with yours):
 
-```console
+```shell
 $ git clone git@github-ElijaRock:ElijaRock/git-guide.git
 $ ls
 git-guide
@@ -254,7 +254,7 @@ Now I am in the "git-guide" directory.
 
 You must now tell git some information so it can properly identify you (you need to be inside of the cloned repo to do this):
 
-```console
+```shell
 $ git config user.name '<your name>'
 $ git config user.email '<your email address>'
 $ git config gpg.format ssh
@@ -271,7 +271,7 @@ You should create another branch if there is only branch main.
 
 The first line creates a new branch called `new-feature`. You can call your new branch whatever you like, but there cannot be spaces (use the `-` instead). The second line switches from the `main` branch to the `new-feature` branch so you can start working on it without changing `main`.
 
-```console
+```shell
 $ git branch new-feature
 $ git checkout new-feature
 ```
@@ -293,7 +293,7 @@ There may also be some files on your computer that are already tracked. These ne
 
 After you have tracked and staged your changes, you might be interested to see what the repo will look like before you commit. You can compare the branch on your computer with the one on the Github website by doing the following (change `new-feature` to the name of your branch).
 
-```console
+```shell
 git diff new-feature origin/new-feature
 ```
 
@@ -305,7 +305,7 @@ You can now commit to the repo. The `-S` option for the commit will sign it with
 
 As noted in the example below, messages need to be enclosed in single quotes:
 
-```console
+```shell
 $ git commit -S -m 'This is a short message describing the changes I have made' -m 'This is a longer, more thorough description of the changes made'
 ```
 
@@ -313,7 +313,7 @@ You can ommit the second `-m` or "message" option if you have only made small, i
 
 The last step is to *push* the commit to the branch you are working on. Now that the commit is on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it. Type (remember to replace `new-feature` with your branch name):
 
-```console
+```shell
 $ git push origin new-feature
 ```
 
@@ -357,7 +357,7 @@ So essentially the workflow is that there can be an `issue` opened for a new fea
 
 Suppose someone on your team worked on your branch while you were gone to help implement the feature. Before you start making changes on your computer again, you need to fetch their changes so you have the modified files. Do this by running the following command:
 
-```console
+```shell
 $ git fetch origin new-feature
 ```
 
@@ -365,25 +365,25 @@ Now you have their changes to compare to the branch on your computer, and need t
 
 If you want to see the difference between the `new-feature` branch on your computer and the repository's up-to-date `new-feature` branch, run this command:
 
-```console
+```shell
 $ git diff new-feature origin/new-feature
 ```
 
 You are now looking at the changes your team member made to your branch compared to the one you had from before. If you like these changes, you can replace the current copy of the branch on your computer with the new version. This is called "rebasing". You can do the following:
 
-```console
+```shell
 $ git rebase origin/new-feature
 ```
 
 You may get an error that you need to stash your changes before a rebase. This happens if you made changes and forgot to commit them. Git allows you to keep your changes in a special safe place called "stash" while having the latest version of the branch to work on.
 
-```console
+```shell
 $ git stash
 ```
 
 You may then run `rebase` again and you will be on the most up to date version of `new-feature` branch. But your uncommitted changes will be missing (temporarily). If you would then like to reapply your changes to this latest version of the branch, run the following command:
 
-```console
+```shell
 $ git stash apply
 ```
 
