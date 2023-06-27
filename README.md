@@ -211,7 +211,9 @@ $ ssh -T git@github-<Github Account Username>
 Hi <Github Account Username>! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Success! If you have not yet changed your `~/.ssh/config` file to include your actual github username, please do so now. You may get a prompt about a fingerprint and it will ask you to input yes or no, say yes.
+Success! If you have not yet changed your `~/.ssh/config` file to include your actual github username, please do so now.
+
+You may get a prompt about a fingerprint and it will ask you to input yes or no. Double check that it says `SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU`, then type yes (this is the Github website's public key fingerprint). If it does not show the correct fingerprint, then you are not connecting to `github.com` and something has gone wrong.
 
 ## Part 5: Git
 
