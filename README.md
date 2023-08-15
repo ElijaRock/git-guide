@@ -389,6 +389,12 @@ You may then run `rebase` again and you will be on the most up to date version o
 $ git stash apply
 ```
 
+Your changes have safely been restored and you can get rid of the stash:
+
+```
+$ git stash drop
+```
+
 Now I am on the latest version of the branch `new-feature` and can track and commit my changes as usual. Git forces you to do this because it would be impossible to have your commit and your peer's commit to be "next to each other" at the same time on the same branch. Essentially what you just did is moved your changes from "next to" the peer's commit to after their commit, creating a linear branch history (think of the image at the beginning of this guide). If this is confusing at first, do not worry, the more you use `git` the more you will understand over time.
 
 I will remind you again that you only need to clone the repo once; always use fetch to grab the newest changes. Also, `git` has many many more features than specified here and can be used to do even more powerful things.
