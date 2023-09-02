@@ -1,1 +1,2 @@
 1. .gitignore file to prevent certain files from being tracked
+2. `git-reset --hard` to undo unwanted stages and tracks to end up at the same place as origin/branch
