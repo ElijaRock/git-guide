@@ -1,45 +1,45 @@
-# Git Guide
-#### A comprehensive and simple beginner's guide to using git as a version control system.
+# Git guide
+#### A comprehensive and simple beginner's guide to using git as a version control system
 
 -------------------------------------------
 
-### NOTICE: If at any point reading this guide you want to skip a section that you are already familiar with, click on the hamburger menu at the top left of this file (above the title and to the left of the filename, see example below).
+### NOTICE: If at any point reading this guide you want to skip a section that you are already familiar with, click the hamburger menu at the top left of this file preceding the title and to the left of the filename, see example below
 
 ![hamburger](/images/hamburger.webp)
 
-## Part 1: What is Git and why use it?
+## Part 1: What's Git and why use it?
 
-Git allows different people in different locations to contribute to a project in a centralized location. The project is usually stored on a website, and can be modified through a tool known as `git`. This tool also preserves project history, so every version of the project can be accessed at any time.
+Git allows different people in different locations to contribute to a project in a centralized location. The project is usually stored on a website, and a tool known as `git` can modify it. This tool also preserves project history, so every version of the project is accessible at any time.
 
-These project "versions" are known as *commits*. You can always revert to a previous commit if you make a mistake and lose your progress.
+A programmer generally refers to these project "versions" as *commits*. You can always revert to a previous commit if you make a mistake and lose your progress.
 
-This commit is done to a *branch*. Think of branches as a slightly different version of the project. For example, you might want to have a `stable` branch that gets updated infrequently in order to have a stable version of the code. Then a `testing` branch can be used to test and implement new features.
+The programmer commits to a *branch*. Think of branches as a slightly different version of the project. For example, you might want to have a `stable` branch that gets updated infrequently to have a stable version of the code. A programmer can use a `testing` branch to test and implement new features.
 
-The commits in the image contain messages informing the team about the purpose of that commit. While commit messages are not required, it is considered bad practice to leave them out.
+The commits in the image contain messages informing the team about the purpose of that commit. While commit messages aren't required, it's considered bad practice to leave them out.
 
 ![Example Graph](/images/example_graph.png)
 
-Now that you have a basic understanding of what Git is, the following parts will help guide you through the setup process.	
+Now that you have a basic understanding of what Git's, the following parts explain the setup process.	
 
-## Part 2: The Terminal
+## Part 2: The terminal
 
-### NOTICE: If you are using a Windows computer you will need to configure WSL (version 2) to follow the rest of the guide from here on. You should be able to run `wsl --install` from powershell as an administrator (click on: https://learn.microsoft.com/en-us/windows/wsl/install).
+### NOTICE: If you are using a Windows computer you may need to configure Windows Subsystem for Linux to follow the rest of the guide from here on. You should be able to run `wsl --install` from PowerShell as an administrator (https://learn.microsoft.com/en-us/windows/wsl/install).
 
-### Basic Syntax
+### Basic syntax
 
-Git can be used through a *command line interface*. This means that you will be utilizing git through a *terminal emulator* on your computer (terminal for short). This is an interactive prompt that allows you to type commmands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
+You can use `git` through a *command line interface*. This means that you'll be utilizing git through a *terminal emulator* or terminal on your computer. This is an interactive prompt that allows you to type commands in the *bash* language to execute. An example of a terminal command that commits to the current working branch looks like this:
 
 ```
 $ git commit --message 'Added methods for telemetry'
 ```
 
-The `$` indicates the start of the line for a command to be entered by the user. It is not typed by the user but will exist on its own line in the terminal emulator by default. If the line is blank, then your terminal emulator is already executing a task and not ready for user input.
+The `$` indicates the start of the line for the user to enter a command. It's not typed by the user but it'll exist on its own line in the terminal emulator by default. If the line is blank, then your terminal emulator is already executing a task and not ready for user input.
 
-The command to be executed is then entered: `git`. Since the `git` command takes one required argument, it is then followed by the phrase: `commit`. In other words, you are telling the terminal that you would like to make a new git commit. Now you can finish the command by hitting the enter key and you have made a git commit. However, as I said earlier, it is good practice to include an optional message describing the purpose of the commit.
+The command itself is then entered: `git`. Since the `git` command takes one required argument, it's then followed by the phrase: `commit`. In other words, you are telling the terminal that you would like to make a new git commit. Now you can finish the command by hitting the enter key and you have made a git commit. However, as stated prior, it's good practice to include an optional message describing the purpose of the commit.
 
-Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` followed by one or more words. In this case, `--message` tells the `git commit` to include a message. If there is an option with multiple words it will probably look something like this: `--option-with-multiple-words`.
+Next are the optional arguments or *options*. You can choose a specific option by starting with a `--` followed by one or more words. In this case, `--message` tells the `git commit` to include a message. If there is an option with multiple words it'll probably look something like this: `--option-with-multiple-words`.
 
-Since arguments are seperated by a space in bash, the message argument must start and end with a single quote mark or only the first word will be taken as the message. ie:
+Since the user separates arguments by a space in bash, the message argument must start and end with a single quote mark or it only considers the first word in the message. i.e:
 
 `$ git commit -m Added methods for telemetry` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Incorrect**\
 `$ git commit -m 'Added methods for telemetry'` &nbsp; **Correct**
@@ -50,11 +50,11 @@ Feel free to follow along in your own computer's terminal emulator during this s
 
 The following paragraphs explain how to access a bash *shell* from your operating system. A shell runs inside of your terminal emulator and is what you interface with when typing out commands.
 
-On a Windows computer you can search for "powershell" (don't run as administrator this time) and type `wsl` followed by the enter key. If the command hangs or is not found, that means you haven't set up WSL correctly and you must go back to the previous step to try again.
+On a Windows computer you can search for "PowerShell" without running as administrator, and type `wsl` followed by the enter key. If the command hangs or isn't found, that means you haven't set up the Windows Subsystem for Linux correctly and you must go back to the previous step to try again.
 
 On MacOS search for the "terminal" app.
-
-On Ubuntu search for "terminal".
+On Windows search for the "Ubuntu" app.
+On Ubuntu search for the "terminal" app.
 
 When you first open your terminal emulator, there might be a message at the top. Below that message you should see your computer's username followed by a special symbol, usually a dollar sign. In my case, it looks like this:
 
@@ -62,20 +62,20 @@ When you first open your terminal emulator, there might be a message at the top.
 eli@laptop$
 ```
 
-Depending on what operating system you are using, this might look a bit different than mine (eg: a `%` symbol for macos). You may start typing your commands after the `$`, `%`, `>` or whatever other symbol is present. This is the indicator that lets you know the shell has finished executing its previous process and is ready for more input. If there is no symbol present then the terminal is currently executing a previous command and is not ready for you to type input.
+Depending on what operating system you are using, this might look a bit different than the example, e.g: a `%` symbol for MacOS. You may start typing your commands after the `$`, `%`, `>` or whatever other symbol is present. This is the indicator that lets you know the shell has finished executing its previous process and is ready for more input. If there is no symbol present then the terminal is currently executing a previous command and isn't ready for you to type input.
 
-I will now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. It should appear automatically. You will see a `$` after your username and this is where you are meant to start typing your command. If you do not see a `$`, then that line is the output of the command. Don't get confused when you see a slightly different output. Ie: mine will say "eli" because that is my username. The first command I would like you to type is `pwd`:
+I'll now be using the `$` delimiter to mark the beginning of a line of input for the rest of this guide. It should appear automatically. You'll see a `$` after your username and this is where you can start typing your command. If you don't see a `$`, then that line is the output of the command. Don't get confused when you see a slightly different output. I.e: the example says "eli" because that's my username. The first command to type is `pwd`:
 
 ```
 $ pwd
 /home/eli
 ```
 
-The second line of this example is not prefixed with a `$` symbol as it is the output of the previous command and is not typed out by the user.
+The second line of this example isn't prefixed with a `$` symbol as it's the output of the previous command and isn't typed out by the user.
 
 This command **prints** the current **working** **directory**. You are basically telling your bash shell to print folder on your computer that you are running commands inside of. 
 
-If you would like to see the folders and files that are inside of your current folder (kind of like a file manager), you can **list** them with `ls`.
+If you would like to see the folders and files that are inside of your current folder, you can **list** them with `ls`.
 
 ```
 $ ls
@@ -102,25 +102,25 @@ You now know how to move around in the terminal.
 
 If you have taken a Computer Science class prior to reading this guide, then you may remember asymmetric encryption.
 
-If you don't, I will provide a simple example. I start by generating a keypair: two keys that are mathematically linked. A key consists of randomly generated symbols and letters that would be difficult to guess. One key is public and is known by everyone. The other is private and must not be distributed.
+If you don't, I'll provide a simple example. Start by generating a key pair: two keys that are mathematically linked. A key consists of randomly generated symbols and letters that would be difficult to guess. One key is public and everyone can access it. The other is private and you shouldn't distribute it.
 
-If my friend wants to send me a message, they can encrypt it with my public key (which everyone has). Now, the message is garbled gibberish and makes no sense to anyone (kind of like how an enigma machine works). This means if someone with mal-intent were to intercept this message, it would be of no use to them.
+If a peer wants to send a message to a programmer, they can encrypt it with the programmer's public key. Now, the message is gibberish and makes no sense to anyone. This means if someone with mal-intent were to intercept this message, it would be of no use to them.
 
-The encrypted message can then be decrypted with my own private key. Therefore, the message can only be understood by me, and nobody else can interpret it. Anything that is encrypted with the public key can only be decrypted with the private key and vice-versa.
+The programmer can then decrypt the encrypted message with their own private key. Therefore, only the programmer understands message, and nobody else can interpret it. Anything that's encrypted with the public key can only be decrypted with the private key and vice-versa.
 
-You may ask what the use is of encrypting something with my private key, if everyone can just decrypt it with my public key. You are correct in that it doesn't work to obfuscate the message; however, it can be used as a digital signature.
+You may ask what the use is of encrypting something with the programmer's private key, if everyone can just decrypt it with their public key. You are correct in that it doesn't work to obfuscate the message. However, it can be used as a digital signature.
 
-If everyone can decrypt the message with my public key, that means it must have been encrypted with my own private key (the one that nobody else has). In other words, no one will be able to falsely claim that they are me because they do not have my private key and therefore cannot sign their messages under my name.
+If everyone can decrypt the message with the programmer's public key, that means they must have encrypted it with their own private key. In other words, no one can falsely claim that they're the programmer because they don't have the programmer's private key and therefore can't sign their messages under the programmer's name.
 
-In other words you will need SSH for two reasons:
+In other words you'll need SSH for two reasons:
 
-1. You are going to be signing your commits so we know that ***you*** are the one who made them.
+1. You are going to be signing your commits so everyone can verify that ***you*** are the one who made them.
 
-2. If you are working on a private *repository*, meaning your code can only be seen by authorized users, you will need an SSH keypair to do this (SSH is a protocol that uses asymmetric encryption to verify identity among other things).
+2. If you are working on a private *repository*, meaning only authorized users can see your code, you'll need an SSH key pair to do this.
 
-#### DISCLAIMER: The private key is private and STAYS ON YOUR COMPUTER. DO NOT SHARE YOUR PRIVATE KEY ***EVER***, not even between devices that you own. If you need to work on a repository with another device, you ***MUST*** generate a new keypair.
+DISCLAIMER: the private key is private and stays on your computer. Don't share your private key ***ever***, not even between devices that you own. If you need to work on a repository with another device, you ***must*** generate a new key pair.
 
-A repository is a cloud location that stores your projects and tracks their history. We will be working with repositories using git as an interface to contribute and collaborate.
+A repository is a cloud location that stores your projects and tracks their history. You'll be working with repositories using git as an interface to contribute and collaborate.
 
 Open the terminal and type `cd ~`, (`~` is an alias for "home" and in my case really translates to "/home/eli"), although you proabably are already in the home directory (you will know if you run `pwd`).
 
@@ -134,7 +134,7 @@ Now that everyone has an empty `.ssh` directory, you will need to generate an ss
 $ ssh-keygen -a 100 -t ed25519 -f ~/.ssh/<filename> -C <your_email_address>
 ```
 
-`-a` is an option that specifies the number of rounds of KDF (key derivation function) to be used. A higher number of rounds means the random strings are more secure; 100 is plenty. `-t` allows you to pick the type of function used to generate the keypair. We are using ed25519 because it is secure, convenient, and fast. `-f` lets you pick where to store the keypair and `-C` allows you to type out the email address that you will be identified with.
+`-a` is an option that specifies the number of rounds of KDF (key derivation function) to be used. A higher number of rounds means the random strings are more secure; 100 is plenty. `-t` allows you to pick the type of function used to generate the keypair. We are using ed25519 because it's secure, convenient, and fast. `-f` lets you pick where to store the keypair and `-C` allows you to type out the email address that you will be identified with.
 
 If you are prompted to enter a password, you can, or just leave it blank (it doesn't really matter which one you choose). However, if you are using a shared device I ***HIGHLY*** suggest you use a strong password.
 
@@ -267,7 +267,7 @@ Replace "\<your name\>" with your name, "\<your email address\>" with your email
 
 You are now working in your cloned repo, on the `main` branch. ***NEVER*** commit to or push to the main branch directly. We want to protect the stability of the main branch.
 
-You can see which branch you are working on using `git status`. It should say something like "On branch main" at the top, along with other information I will explain later.
+You can see which branch you are working on using `git status`. It should say something like "On branch main" at the top, along with other information I'll explain later.
 
 You should create another branch if there is only branch main.
 
@@ -313,7 +313,7 @@ $ git commit -S -m 'This is a short message describing the changes I have made' 
 
 You can ommit the second `-m` or "message" option if you have only made small, incremental changes. The `-S` option allows you to sign the commit with your signing key, in other words we can verify that **YOU** made these changes (in the case of identity theft). That is why it's so important to not give your private key to anyone ever.
 
-The last step is to *push* the commit to the branch you are working on. Now that the commit is on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it. Type (remember to replace `new-feature` with your branch name):
+The last step is to *push* the commit to the branch you are working on. Now that the commit's on your computer and everything is as you like it, you can update it to the repository online through a `git push` command. This will show the commit on github.com website and everyone else will be able to see it. Type (remember to replace `new-feature` with your branch name):
 
 ```
 $ git push origin new-feature
@@ -397,11 +397,11 @@ $ git stash drop
 
 Now I am on the latest version of the branch `new-feature` and can track and commit my changes as usual. Git forces you to do this because it would be impossible to have your commit and your peer's commit to be "next to each other" at the same time on the same branch. Essentially what you just did is moved your changes from "next to" the peer's commit to after their commit, creating a linear branch history (think of the image at the beginning of this guide). If this is confusing at first, do not worry, the more you use `git` the more you will understand over time.
 
-I will remind you again that you only need to clone the repo once; always use fetch to grab the newest changes. Also, `git` has many many more features than specified here and can be used to do even more powerful things.
+I'll remind you again that you only need to clone the repo once; always use fetch to grab the newest changes. Also, `git` has many many more features than specified here and can be used to do even more powerful things.
 
 ## Part 6: Best Practices
 
-Now that you have the background knowledge, I will let you know of some best practices that I learned in the time that I have used git.
+Now that you have the background knowledge, I'll let you know of some best practices that I learned in the time that I have used git.
 
 1. If ever in doubt run `git status`. This will give you valuable information on the current state of the git repo on your computer, changes you have made, etc.
 
