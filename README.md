@@ -19,7 +19,7 @@ The commits in the image contain messages informing the team about the purpose o
 
 ![Example Graph](/images/example_graph.png)
 
-Now that you have a basic understanding of what Git's, the following parts explain the setup process.	
+Now that you have a basic understanding of what Git's, the following parts explain the setup process.
 
 ## Part 2: The terminal
 
@@ -73,7 +73,7 @@ $ pwd
 
 The second line of this example isn't prefixed with a `$` symbol as it's the output of the previous command and isn't typed out by the user.
 
-This command **prints** the current **working** **directory**. You are basically telling your bash shell to print folder on your computer that you are running commands inside of. 
+This command **prints** the current **working** **directory**. You are basically telling your bash shell to print folder on your computer that you are running commands inside of.
 
 If you would like to see the folders and files that are inside of your current folder, you can **list** them with `ls`.
 
@@ -161,7 +161,8 @@ The following config file is an example that you should follow. You may not have
 # ~/.ssh/config
 # Primary Github account
 Host github-<Github Account Username>
-	HostName github.com
+	HostName ssh.github.com
+    Port 443
 	IdentityFile ~/.ssh/<filename>
 	IdentitiesOnly yes
 ```
@@ -184,7 +185,7 @@ Visit [https://github.com/](https://github.com/) and create an account with your
 
 ### Adding SSH key to account
 
-Click on your profile picture on Github and press settings. 
+Click on your profile picture on Github and press settings.
 
 ![settings](/images/settings_edit.png)
 
@@ -291,7 +292,7 @@ Now you must *track* and/or *stage*, then commit the changes you have made to a 
 
 By default, any new files you create in the branch are untracked. That means that if you make a commit they will not show up and only stay on your machine. To track and stage a new file, you can type `git add <filename>`, followed by the actual file name. This can get tedious if you are adding a lot of new files, so you can also type `git add --all` which will track and stage the new files you have added.
 
-There may also be some files on your computer that are already tracked. These need to be staged if you have made any modifications to them. In addition to tracking the newly created files, `git add <filename>` or `git add --all` commands can be used to stage the existing, modified ones. 
+There may also be some files on your computer that are already tracked. These need to be staged if you have made any modifications to them. In addition to tracking the newly created files, `git add <filename>` or `git add --all` commands can be used to stage the existing, modified ones.
 
 After you have tracked and staged your changes, you might be interested to see what the repo will look like before you commit. You can compare the branch on your computer with the one on the Github website by doing the following (change `new-feature` to the name of your branch).
 
